@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --background: #060b18;
+  --foreground: #e8eef8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-night: #060b18;
+  --color-abyss: #0b1426;
+  --color-slate-deep: #131f38;
+  --color-ice: #cfe6ff;
+  --color-snow: #f7fbff;
+  --color-glacier: #7dd3fc;
+  --color-alpenglow: #fb7185;
+  --color-summit: #fbbf24;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100%;
+  background:
+    radial-gradient(1100px 600px at 15% -10%, rgba(56, 130, 246, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(251, 113, 133, 0.12), transparent 55%),
+    linear-gradient(180deg, #060b18 0%, #081020 55%, #060b18 100%);
+  color: var(--foreground);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp 0.5s ease-out both; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+.animate-floaty { animation: floaty 4.5s ease-in-out infinite; }
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.35)); }
+  50% { filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.75)); }
+}
+.animate-glow { animation: glowPulse 2.6s ease-in-out infinite; }
+
+@keyframes stormShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px) rotate(-0.6deg); }
+  40% { transform: translateX(3px) rotate(0.6deg); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+.animate-storm { animation: stormShake 0.6s ease-in-out 2; }
+
+@keyframes avalancheSlide {
+  0% { transform: translateY(-8px); opacity: 0.5; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.animate-avalanche { animation: avalancheSlide 0.5s ease-out both; }
+
+@keyframes snowfall {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 220px 440px, 120px 300px; }
+}
+
+.snow-layer {
+  background-image:
+    radial-gradient(2px 2px at 30px 60px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 120px 160px, rgba(255, 255, 255, 0.55), transparent);
+  background-size: 220px 220px, 160px 160px;
+  animation: snowfall 14s linear infinite;
+}
+
+.card-glass {
+  background: linear-gradient(180deg, rgba(19, 31, 56, 0.72), rgba(11, 20, 38, 0.72));
+  border: 1px solid rgba(125, 211, 252, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes shine {
+  from { background-position: -120% 0; }
+  to { background-position: 220% 0; }
+}
+.reward-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.16) 50%, transparent 65%);
+  background-size: 220% 100%;
+  animation: shine 3s linear infinite;
+  pointer-events: none;
+}
+
+.mountain-scene {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(125, 211, 252, 0.25); border-radius: 999px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
